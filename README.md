@@ -41,7 +41,41 @@ conda activate AutoTSAD
 
 ### 2.2 Usage
 
+We provide a sample time series in `sample/` to help you get started,
 
+#### (1) Internal Evaluation
+
+```bash
+python main.py -a [Method_name]
+```
+Available Method: EM&MV, CQ, MC, Synthetic
+
+For example, if you choose `Synthetic` as the automated solution, then 
+```bash
+python main.py -a Synthetic
+```
+Then output is the anomaly score.
+
+#### (2) Pretraining-based 
+
+**Step 1:** Pretraining Pipeline
+```bash
+cd Pretraining_based/Pretraining_pipeline
+```
+Then follow the steps in the scripts to produce the training data and perform model selector pretraining.
+We provide weights for some model selectors in `Pretraining_based/Pretrained_weights`.
+
+**Step 2:** Apply Model Selection
+
+```bash
+python main.py -a UReg  # or any other pretraining-based model selectors
+```
+
+#### (3) Model Generation
+
+```bash
+python main.py -a OE_AOM  # or any other model generation techniques
+```
 
 <h2 id="autotsad"> 3. AutoTSAD Benchmark </h2>
 
